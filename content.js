@@ -2,7 +2,7 @@
    NỘI DUNG TRANG WEB – sửa file này là trang tự đổi theo.
    Cách dễ nhất: mở trang với đuôi #edit (vd: index.html#edit) để sửa
    trực tiếp trên trang, rồi bấm "Tải content.js" và chép đè file này.
-   - Ảnh: {src:'img/ten.jpg', cap:'chú thích'}  |  ô trống: {ph:'ghi chú'}
+   - Ảnh: {src:'img/ten.jpg', cap:'chú thích'}  (thêm fit:'full' để hiện nguyên ảnh, không cắt – hợp với ảnh chụp tin nhắn)  |  ô trống: {ph:'ghi chú'}
    - Sticker: {src:'stk/s1.png', side:'left' hoặc 'right', rot: độ nghiêng}
    - Video: {label:'...', src:'video/ten.mp4'} (để src rỗng = khung chờ)
    ===================================================================== */
@@ -39,14 +39,14 @@ window.CONTENT = {
 
   { date:'20.11.2025', title:'Tin nhắn đầu tiên',
     lead:'Rồi một ngày cuối tháng 11, ông trời cho anh một cơ hội…',
-    photos:[{src:'img/tn1.jpg',cap:'Đêm 20/11, mấy dòng đầu tiên của tụi mình'},
-            {src:'img/tn2.jpg',cap:'Hóa ra từ hồi lớp 5 em đã biết đến anh rồi á'},
-            {src:'img/tn3.jpg',cap:'“Em thích anh lắm nên là không có chuyện đó đâu”'},
-            {src:'img/tn4.jpg',cap:'Anh ngại mà vẫn cố nhắn tiếp nèee'},
-            {src:'img/tn5.jpg',cap:'Thật? real=))????'},
-            {src:'img/tn6.jpg',cap:'Ghi chú nhỏ mà tim anh đập to lắm'},
-            {src:'img/tn7.jpg',cap:'Chị Vân bảo: phen này rung động thật rồi ;>'},
-            {src:'img/tn8.jpg',cap:'Playlist “Yêu” anh làm cho em'}],
+    photos:[{src:'img/tn1.jpg',fit:'full',cap:'Đêm 20/11, mấy dòng đầu tiên của tụi mình'},
+            {src:'img/tn2.jpg',fit:'full',cap:'Hóa ra từ hồi lớp 5 em đã biết đến anh rồi á'},
+            {src:'img/tn3.jpg',fit:'full',cap:'“Em thích anh lắm nên là không có chuyện đó đâu”'},
+            {src:'img/tn4.jpg',fit:'full',cap:'Anh ngại mà vẫn cố nhắn tiếp nèee'},
+            {src:'img/tn5.jpg',fit:'full',cap:'Thật? real=))????'},
+            {src:'img/tn6.jpg',fit:'full',cap:'Ghi chú nhỏ mà tim anh đập to lắm'},
+            {src:'img/tn7.jpg',fit:'full',cap:'Chị Vân bảo: phen này rung động thật rồi ;>'},
+            {src:'img/tn8.jpg',fit:'full',cap:'Playlist “Yêu” anh làm cho em'}],
     msg:['Ngày 20/11, anh nhắn cho em. Chẳng nhớ nổi mình đã gõ đi gõ lại câu đầu tiên bao nhiêu lần nữa.',
          'Ai mà ngờ được, từ mấy dòng tin nhắn hôm ấy, giờ tụi mình đã đi được một năm rồi nèee.'] },
 
@@ -73,7 +73,7 @@ window.CONTENT = {
             {src:'img/yx4.jpg',cap:'Cái mặt hạnh phúc của tui'},
             {src:'img/p6.jpg',cap:'Hai tấm ảnh tạo chữ N của em'},
             {src:'img/p31.jpg',cap:'Anh ở đơn vị vẫn nhớ em nè'},
-            {src:'img/yx5.jpg',cap:'21.12.2025 – anh nhớ em lắm'}],
+            {src:'img/yx5.jpg',fit:'full',cap:'21.12.2025 – anh nhớ em lắm'}],
     msg:['Những tối gọi nhau, những tấm ảnh chụp vội gửi cho nhau để biết người kia vẫn ổn. Lúc anh thấy hai tấm ảnh tạo chữ N, anh đã hạnh phúc lắm.',
          'Cũng chính mấy tháng này anh nảy ra ý viết truyện về tụi mình, vì nhớ em quá mà chẳng biết làm gì hơn ;>'],
     sticker:{src:'stk/s6.png', side:'right', rot:8} },

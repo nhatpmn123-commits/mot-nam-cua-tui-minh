@@ -93,6 +93,7 @@ button{font:inherit}
 .slide:nth-child(even){transform:rotate(1.2deg)}
 .slide button.ph{display:block;width:100%;padding:0;border:none;background:none;cursor:zoom-in}
 .slide img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:var(--blue-soft)}
+.slide.full img{object-fit:contain;background:#1b1b1f}
 .slide .cap{font-family:var(--hand);font-size:18px;line-height:1.25;text-align:center;padding:8px 4px 12px;min-height:44px}
 .slide.empty .box{aspect-ratio:4/5;border:2px dashed #9fcbe8;background:#f7fbfe;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;color:var(--muted);font-size:14px}
 .cnav{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:2px}
@@ -266,6 +267,6 @@ body.editing .track{scroll-snap-type:none}
 </div>
 
 <script>document.write('<script src="content.js?v=' + Date.now() + '"><\/script>');</script>
-<script src="app.js"></script>
+<script>document.write('<script src="app.js?v=' + Date.now() + '"><\/script>');</script>
 </body>
 </html>

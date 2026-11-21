@@ -46,7 +46,7 @@ function renderTimeline(){
           <select data-act="pmove" data-e="${i}" data-k="${k}" aria-label="Chuyển ảnh sang mốc khác"><option value="">Chuyển sang…</option>${moveOpts}</select>
         </div>` : '';
       if (p.ph) return `<div class="slide empty"><div class="box" data-path="entries.${i}.photos.${k}.ph">${esc(p.ph)}</div><div class="cap">sắp có nè</div>${ctl}</div>`;
-      return `<div class="slide"><button class="ph" type="button" data-src="${esc(p.src)}" data-cap="${esc(p.cap)}" aria-label="Xem lớn: ${esc(p.cap||'ảnh')}"><img src="${esc(p.src)}" alt="${esc(p.cap)}"></button><div class="cap" data-path="entries.${i}.photos.${k}.cap">${esc(p.cap)}</div>${ctl}</div>`;
+      return `<div class="slide${p.fit==='full'?' full':''}"><button class="ph" type="button" data-src="${esc(p.src)}" data-cap="${esc(p.cap)}" aria-label="Xem lớn: ${esc(p.cap||'ảnh')}"><img src="${esc(p.src)}" alt="${esc(p.cap)}"></button><div class="cap" data-path="entries.${i}.photos.${k}.cap">${esc(p.cap)}</div>${ctl}</div>`;
     }).join('');
     const multi = photos.length > 1;
     const carousel = photos.length ? `
