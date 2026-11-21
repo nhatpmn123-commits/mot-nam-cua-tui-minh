@@ -167,6 +167,7 @@ body.editing [data-path]{outline:2px dashed transparent;outline-offset:3px;borde
 body.editing [data-path]:hover{outline-color:#9fcbe8}
 body.editing [data-path]:focus{outline-color:var(--pink);background:rgba(252,221,233,.35)}
 .edit-bar{position:fixed;left:0;right:0;bottom:0;z-index:80;background:var(--ink);color:#fff;padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;font-size:14px}
+.edit-bar[hidden]{display:none}
 .edit-bar b{font-family:var(--hand);font-weight:400;font-size:20px;margin-right:6px}
 .edit-bar button{min-height:40px;padding:0 12px;border-radius:6px;border:2px solid #fff;background:transparent;color:#fff;cursor:pointer;font-weight:700}
 .edit-bar button.main{background:var(--pink);border-color:var(--pink)}
