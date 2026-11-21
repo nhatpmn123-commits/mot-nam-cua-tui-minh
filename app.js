@@ -46,7 +46,7 @@ function renderTimeline(){
           <select data-act="pmove" data-e="${i}" data-k="${k}" aria-label="Chuyển ảnh sang mốc khác"><option value="">Chuyển sang…</option>${moveOpts}</select>
         </div>` : '';
       if (p.ph) return `<div class="slide empty"><div class="box" data-path="entries.${i}.photos.${k}.ph">${esc(p.ph)}</div><div class="cap">sắp có nè</div>${ctl}</div>`;
-      return `<div class="slide${p.fit==='full'?' full':''}"><button class="ph" type="button" data-src="${esc(p.src)}" data-cap="${esc(p.cap)}" aria-label="Xem lớn: ${esc(p.cap||'ảnh')}"><img src="${esc(p.src)}" alt="${esc(p.cap)}"></button><div class="cap" data-path="entries.${i}.photos.${k}.cap">${esc(p.cap)}</div>${ctl}</div>`;
+      return `<div class="slide${p.fit==='full'?' full':''}"><button class="ph" type="button" data-src="${esc(p.src)}" data-cap="${esc(p.cap)}" aria-label="Xem lớn: ${esc(p.cap||'ảnh')}"><img src="${esc(p.src)}" alt="${esc(p.cap)}" loading="lazy" decoding="async"></button><div class="cap" data-path="entries.${i}.photos.${k}.cap">${esc(p.cap)}</div>${ctl}</div>`;
     }).join('');
     const multi = photos.length > 1;
     const carousel = photos.length ? `
@@ -60,7 +60,7 @@ function renderTimeline(){
       </div>` : '';
     const addPhoto = EDIT ? `<div class="ectl add-photo"><input type="text" placeholder="img/ten-anh.jpg" aria-label="Đường dẫn ảnh mới" data-addinput="${i}"><button type="button" data-act="padd" data-e="${i}">+ Thêm ảnh</button></div>` : '';
     const video = e.video ? `<div class="video"><div class="vlabel" data-path="entries.${i}.video.label">${esc(e.video.label)}</div>${
-        e.video.src ? `<video src="${esc(e.video.src)}" controls playsinline preload="metadata"></video>`
+        e.video.src ? `<video src="${esc(e.video.src)}" ${e.video.poster?`poster="${esc(e.video.poster)}"`:''} controls playsinline preload="${e.video.poster?'none':'metadata'}"></video>`
                     : `<div class="box">${playSvg}<div>Video sẽ được thêm vào đây</div></div>`}</div>` : '';
     const st = e.sticker ? `<img class="stk-float" src="${esc(e.sticker.src)}" alt="" style="${e.sticker.side==='left'?'left':'right'}:-4px;rotate:${e.sticker.rot||0}deg;animation-delay:${(i%4)*.5}s">` : '';
     const ectl = EDIT ? `<div class="ectl entry-ctl">
@@ -173,14 +173,40 @@ function setupEditBar(){
 
 /* ---------- lightbox, stickers, counter, envelope, lock ---------- */
 const lb = $('#lb');
+let lbList = [], lbIdx = 0;
+lb.insertAdjacentHTML('beforeend', `<button class="lbnav prev" type="button" aria-label="Ảnh trước">${arrowL}</button><button class="lbnav next" type="button" aria-label="Ảnh sau">${arrowR}</button><div class="lbcount"></div>`);
+function lbShow(i){
+  if (!lbList.length) return;
+  lbIdx = (i + lbList.length) % lbList.length; const b = lbList[lbIdx];
+  const img = lb.querySelector('img'); img.src=b.dataset.src; img.alt=b.dataset.cap;
+  lb.querySelector('.lbcap').textContent=b.dataset.cap;
+  lb.querySelector('.lbcount').textContent = lbList.length>1 ? `${lbIdx+1} / ${lbList.length}` : '';
+  lb.classList.toggle('single', lbList.length<2);
+}
 document.addEventListener('click', ev => {
   if (EDIT) return;
   const b = ev.target.closest('button.ph'); if(!b) return;
-  lb.querySelector('img').src=b.dataset.src; lb.querySelector('img').alt=b.dataset.cap;
-  lb.querySelector('.lbcap').textContent=b.dataset.cap; lb.classList.add('show'); lb.querySelector('.close').focus();
+  const track = b.closest('.track');
+  lbList = track ? [...track.querySelectorAll('button.ph')] : [b];
+  lbShow(lbList.indexOf(b)); lb.classList.add('show'); lb.querySelector('.close').focus();
 });
-lb.addEventListener('click', ev => { if(ev.target===lb || ev.target.closest('.close')) lb.classList.remove('show'); });
-document.addEventListener('keydown', ev => { if(ev.key==='Escape') lb.classList.remove('show'); });
+lb.addEventListener('click', ev => {
+  if (ev.target.closest('.lbnav.prev')) return lbShow(lbIdx-1);
+  if (ev.target.closest('.lbnav.next')) return lbShow(lbIdx+1);
+  if(ev.target===lb || ev.target.closest('.close')) lb.classList.remove('show');
+});
+document.addEventListener('keydown', ev => {
+  if (!lb.classList.contains('show')) return;
+  if(ev.key==='Escape') lb.classList.remove('show');
+  if(ev.key==='ArrowLeft') lbShow(lbIdx-1);
+  if(ev.key==='ArrowRight') lbShow(lbIdx+1);
+});
+let lbX = null;
+lb.addEventListener('touchstart', ev => { lbX = ev.touches[0].clientX; }, {passive:true});
+lb.addEventListener('touchend', ev => {
+  if (lbX===null) return; const dx = ev.changedTouches[0].clientX - lbX; lbX = null;
+  if (Math.abs(dx) > 45) lbShow(lbIdx + (dx<0 ? 1 : -1));
+});
 
 document.addEventListener('click', ev => {
   const s = ev.target.closest('.stk-float'); if(!s) return;

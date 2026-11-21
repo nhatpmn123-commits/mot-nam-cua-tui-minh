@@ -84,7 +84,7 @@ window.CONTENT = {
             {src:'img/h2a.jpg',cap:'Chữ V đôi nèee'},
             {src:'img/p8.jpg',cap:'Hải Yến thì vẫn rất là cute rồii'},
             {src:'img/p9.jpg',cap:'Anh đã hạnh phúc biết bao, và anh nghĩ em cũng thế…'}],
-    video:{label:'Video hôm ấy nè', src:''},
+    video:{label:'Video hôm ấy nè', src:'video/hen-ho-lan-hai.mp4', poster:'video/hen-ho-lan-hai.jpg'},
     msg:['Ngày 7/2 anh về, và tụi mình gặp lại nhau. Ngồi cạnh em mà anh cứ cười mãi, hạnh phúc chết đi được.'] },
 
   { date:'Tháng 2.2026', title:'Những ngày bám nhau',
