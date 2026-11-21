@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Một năm của tụi mình</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+:root{
+  --paper:#f2f9fe; --grid:#d6eaf7; --ink:#2b4a66; --muted:#557896;
+  --pink:#c93f78; --pink-soft:#fcdde9; --blue:#2f7fc1; --blue-soft:#d4ebfa;
+  --tape-pink:#f7b9d0; --tape-blue:#9fd2f3;
+  --hand:'Patrick Hand', cursive; --body:'Nunito', system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;overflow-x:hidden}
+body{overflow-x:clip}
+body{
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:22px 22px;
+  color:var(--ink); font-family:var(--body); line-height:1.6; overflow-x:hidden;
+}
+button{font:inherit}
+.hand{font-family:var(--hand)}
+.wrap{max-width:560px;margin:0 auto;padding:0 20px;position:relative}
+
+/* ---------- Lock ---------- */
+#lock{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:24px;
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:22px 22px;transition:opacity .7s ease, transform .7s ease}
+#lock.gone{opacity:0;transform:translateY(-30px);pointer-events:none}
+.lock-card{position:relative;width:100%;max-width:380px;text-align:center}
+.lock-card .stk{width:150px;transform:rotate(-6deg);display:block;margin:0 auto 6px;animation:bob 3.2s ease-in-out infinite}
+.lock-card h1{font-family:var(--hand);font-weight:400;font-size:42px;line-height:1.05;margin:6px 0 4px}
+.lock-card p{margin:0 0 18px;color:var(--muted)}
+.lock-form{background:#fff;border:2px dashed #9fcbe8;border-radius:8px;padding:18px;transform:rotate(-1deg);text-align:left}
+.lock-form label{font-family:var(--hand);font-size:21px;display:block;margin-bottom:6px}
+.lock-row{display:flex;gap:8px}
+.lock-row input{flex:1;min-width:0;height:48px;border:none;border-bottom:2px solid var(--ink);background:transparent;font-family:var(--hand);font-size:22px;color:var(--ink);padding:0 4px}
+.lock-row input:focus{outline:none;border-bottom-color:var(--pink)}
+.btn{height:48px;padding:0 18px;border:2px solid var(--ink);border-radius:6px;background:var(--pink);color:#fff;font-family:var(--hand);font-size:21px;box-shadow:3px 3px 0 var(--ink);cursor:pointer}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.lock-msg{min-height:26px;margin-top:10px;font-family:var(--hand);font-size:19px;color:var(--pink)}
+.shake{animation:shake .45s}
+@keyframes shake{20%,60%{transform:translateX(-8px) rotate(-1deg)}40%,80%{transform:translateX(8px) rotate(-1deg)}}
+
+/* ---------- Hero ---------- */
+.hero{padding:56px 0 30px;text-align:center;position:relative}
+.kicker{display:inline-block;background:#fff;border:2px solid var(--ink);border-radius:999px;padding:2px 14px;font-family:var(--hand);font-size:18px;transform:rotate(-2deg)}
+.hero h1{font-family:var(--hand);font-weight:400;font-size:clamp(46px,13vw,68px);line-height:1;margin:16px 0 8px}
+.hero h1 .heart{color:var(--pink)}
+.hero .sub{margin:0 auto;max-width:360px;color:var(--muted)}
+.hero-photo{position:relative;width:250px;margin:28px auto 8px;background:#fff;padding:10px 10px 40px;box-shadow:0 8px 18px rgba(43,74,102,.2);transform:rotate(3deg)}
+.hero-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.hero-photo figcaption{position:absolute;left:0;right:0;bottom:6px;font-family:var(--hand);font-size:20px}
+.tape{position:absolute;width:86px;height:24px;opacity:.88}
+.counter{margin:30px auto 0;max-width:420px;background:#fff;border:2px dashed #9fcbe8;border-radius:8px;padding:16px 14px;transform:rotate(-1deg)}
+.counter .lbl{font-family:var(--hand);font-size:20px;margin-bottom:8px}
+.cgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.cbox{background:var(--blue-soft);border-radius:8px;padding:6px 2px}
+.cbox b{display:block;font-family:var(--hand);font-weight:400;font-size:32px;line-height:1;color:var(--pink)}
+.cbox span{font-size:13px;font-weight:700}
+.counter .love{margin-top:12px;font-family:var(--hand);font-size:20px}
+.counter .love b{font-weight:400;color:var(--pink);font-size:28px}
+.scroll-cue{margin-top:28px;font-family:var(--hand);font-size:20px;color:var(--muted);animation:bob 2.4s ease-in-out infinite}
+
+/* ---------- Timeline ---------- */
+.timeline{position:relative;padding:20px 0 10px}
+.entry{position:relative;margin:0 0 70px}
+.lead{font-family:var(--hand);font-size:22px;line-height:1.35;color:var(--muted);margin:0 0 22px;padding:0 6px;min-height:72px;display:flex;align-items:flex-end}
+.entry.st-right .lead{padding-right:100px}
+.entry.st-left .lead{padding-left:100px}
+.entry > .stk-float{top:-18px;width:92px}
+.card{position:relative;background:#fff;border-radius:6px;padding:22px 18px 20px;box-shadow:0 6px 16px rgba(43,74,102,.14)}
+.card:nth-child(odd){transform:rotate(-.6deg)}
+.date{position:absolute;top:-16px;left:18px;padding:3px 14px;font-family:var(--hand);font-size:19px;color:var(--ink);transform:rotate(-3deg);background:var(--tape-blue)}
+.entry:nth-of-type(even) .date{background:var(--tape-pink);left:auto;right:18px;transform:rotate(3deg)}
+.card h2{font-family:var(--hand);font-weight:400;font-size:32px;line-height:1.1;margin:8px 0 14px}
+.msg{margin:16px 0 0;padding:4px 2px 0;background-image:linear-gradient(transparent 31px,#e3eff8 32px);background-size:100% 32px;line-height:32px;font-size:16px}
+.msg p{margin:0 0 0}
+.msg p + p{margin-top:0;text-indent:0}
+.sign{font-family:var(--hand);font-size:20px;color:var(--pink);text-align:right;margin-top:6px}
+
+/* carousel */
+.carousel{position:relative;margin:0 -18px}
+.track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 18px 14px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 80%;scroll-snap-align:center;background:#fff;padding:9px 9px 0;box-shadow:0 5px 14px rgba(43,74,102,.2);border:1px solid #eef3f7}
+.slide:nth-child(odd){transform:rotate(-1.2deg)}
+.slide:nth-child(even){transform:rotate(1.2deg)}
+.slide button.ph{display:block;width:100%;padding:0;border:none;background:none;cursor:zoom-in}
+.slide img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:var(--blue-soft)}
+.slide .cap{font-family:var(--hand);font-size:18px;line-height:1.25;text-align:center;padding:8px 4px 12px;min-height:44px}
+.slide.empty .box{aspect-ratio:4/5;border:2px dashed #9fcbe8;background:#f7fbfe;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;color:var(--muted);font-size:14px}
+.cnav{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:2px}
+.dots{display:flex;gap:6px}
+.dots i{width:8px;height:8px;border-radius:50%;background:#bcd7ea;display:block;transition:all .2s}
+.dots i.on{background:var(--pink);width:20px;border-radius:4px}
+.arrow{width:44px;height:44px;border-radius:50%;border:2px solid var(--ink);background:#fff;color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.arrow svg{width:18px;height:18px}
+.swipe-hint{text-align:center;font-family:var(--hand);font-size:16px;color:var(--muted);margin-top:4px}
+
+/* video */
+.video{margin-top:18px}
+.video .vlabel{font-family:var(--hand);font-size:20px;margin-bottom:6px}
+.video video{width:100%;border-radius:6px;display:block;background:#000}
+.video .box{border:2px dashed #f2a3c3;background:#fff6fa;border-radius:6px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#9c3f66;text-align:center;padding:16px;font-size:14px}
+.video .box svg{width:38px;height:38px}
+
+/* stickers */
+.stk-float{position:absolute;width:104px;z-index:5;filter:drop-shadow(0 2px 0 rgba(0,0,0,.02));cursor:pointer;animation:bob 3.6s ease-in-out infinite}
+.stk-float.wiggle{animation:wiggle .6s ease}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -6px}}
+@keyframes wiggle{0%,100%{rotate:0deg}25%{rotate:-12deg}75%{rotate:12deg}}
+.doodle{position:absolute;color:var(--pink);opacity:.7}
+
+/* letter */
+.letter-sec{padding:20px 0 40px;text-align:center}
+.letter-sec .lead{text-align:center}
+.envelope{position:relative;width:260px;height:170px;margin:10px auto 0;background:var(--pink-soft);border:2px solid var(--ink);border-radius:6px;cursor:pointer;box-shadow:4px 4px 0 var(--ink);display:block;padding:0}
+.envelope:before{content:"";position:absolute;left:0;right:0;top:0;height:0;border-left:128px solid transparent;border-right:128px solid transparent;border-top:90px solid #f7b9d0}
+.envelope .seal{position:absolute;left:50%;top:70px;transform:translateX(-50%);width:46px;height:46px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center}
+.envelope .seal svg{width:24px;height:24px}
+.envelope .open-txt{position:absolute;bottom:10px;left:0;right:0;font-family:var(--hand);font-size:20px}
+.letter{display:none;text-align:left;margin-top:10px}
+.letter.show{display:block;animation:rise .7s ease}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.letter .card h2{text-align:center}
+.letter .msg{font-size:16.5px}
+.draft-note{font-size:13px;color:var(--muted);text-align:center;margin-top:10px}
+
+.ending{padding:30px 0 70px;text-align:center}
+.ending h2{font-family:var(--hand);font-weight:400;font-size:40px;line-height:1.1;margin:0 0 6px}
+.ending p{color:var(--muted);margin:0}
+
+/* lightbox */
+#lb{position:fixed;inset:0;z-index:60;background:rgba(20,34,48,.92);display:none;align-items:center;justify-content:center;flex-direction:column;padding:20px}
+#lb.show{display:flex}
+#lb img{max-width:100%;max-height:78vh;border:8px solid #fff;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+#lb .lbcap{color:#fff;font-family:var(--hand);font-size:22px;margin-top:12px;text-align:center;max-width:520px}
+#lb .close{position:absolute;top:14px;right:14px;width:46px;height:46px;border-radius:50%;border:2px solid #fff;background:transparent;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+#lb .close svg{width:20px;height:20px}
+
+/* hearts burst */
+.burst{position:fixed;z-index:70;pointer-events:none;color:var(--pink);animation:fly 1.6s ease-out forwards}
+@keyframes fly{to{transform:translate(var(--dx),var(--dy)) scale(.6) rotate(var(--r));opacity:0}}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .stk-float,.scroll-cue,.lock-card .stk{animation:none}
+}
+@media (min-width:640px){
+  .slide{flex-basis:62%}
+  .stk-float{width:124px}
+}
+
+[data-path]{white-space:pre-line}
+/* ---------- Edit mode ---------- */
+body.editing [data-path]{outline:2px dashed transparent;outline-offset:3px;border-radius:3px;cursor:text}
+body.editing [data-path]:hover{outline-color:#9fcbe8}
+body.editing [data-path]:focus{outline-color:var(--pink);background:rgba(252,221,233,.35)}
+.edit-bar{position:fixed;left:0;right:0;bottom:0;z-index:80;background:var(--ink);color:#fff;padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;font-size:14px}
+.edit-bar b{font-family:var(--hand);font-weight:400;font-size:20px;margin-right:6px}
+.edit-bar button{min-height:40px;padding:0 12px;border-radius:6px;border:2px solid #fff;background:transparent;color:#fff;cursor:pointer;font-weight:700}
+.edit-bar button.main{background:var(--pink);border-color:var(--pink)}
+.edit-bar .st{width:100%;text-align:center;font-size:12.5px;opacity:.85}
+body.editing{padding-bottom:130px}
+.ectl{display:none}
+body.editing .ectl{display:flex}
+.slide-ctl{gap:4px;justify-content:center;flex-wrap:wrap;padding:0 4px 10px}
+.slide-ctl button,.slide-ctl select,.entry-ctl button,.add-photo button,.add-photo input{min-height:34px;border:1.5px solid var(--ink);border-radius:6px;background:#fff;color:var(--ink);font:600 13px var(--body);padding:0 8px;cursor:pointer}
+.slide-ctl select{max-width:120px}
+.entry-ctl{gap:6px;flex-wrap:wrap;margin:-8px 0 14px;justify-content:flex-end}
+.add-photo{gap:6px;margin-top:10px}
+.add-photo input{flex:1;min-width:0;cursor:text}
+body.editing .track{scroll-snap-type:none}
+</style>
+</head>
+<body>
+
+<div id="lock" role="dialog" aria-modal="true" aria-labelledby="lockTitle">
+  <div class="lock-card">
+    <img class="stk" id="lockStk" src="" alt="">
+    <h1 id="lockTitle" data-path="lock.title"></h1>
+    <p data-path="lock.sub"></p>
+    <form class="lock-form" id="lockForm">
+      <label for="pw" data-path="lock.label"></label>
+      <div class="lock-row">
+        <input id="pw" type="text" inputmode="numeric" placeholder="dd/mm/yyyy" autocomplete="off">
+        <button class="btn" type="submit">Lật trang</button>
+      </div>
+      <div class="lock-msg" id="lockMsg" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
+
+<main id="main" aria-hidden="true">
+  <section class="hero wrap">
+    <img class="stk-float" src="stk/s5.png" alt="" style="left:-4px;top:300px;rotate:-10deg;width:86px">
+    <img class="stk-float" src="stk/s1.png" alt="" style="right:-4px;top:500px;rotate:8deg;width:84px;animation-delay:.8s">
+    <span class="kicker" data-path="hero.kicker"></span>
+    <h1><span data-path="hero.title"></span> <span class="heart">♥</span></h1>
+    <p class="sub" data-path="hero.sub"></p>
+    <figure class="hero-photo" style="margin-left:auto;margin-right:auto">
+      <span class="tape" style="background:var(--tape-pink);top:-12px;left:20px;transform:rotate(-10deg)"></span>
+      <span class="tape" style="background:var(--tape-blue);top:-10px;right:14px;transform:rotate(9deg)"></span>
+      <img id="heroImg" src="" alt="Ảnh hai đứa">
+      <figcaption data-path="hero.photoCap"></figcaption>
+    </figure>
+    <div class="counter">
+      <div class="lbl" data-path="hero.counterLabel"></div>
+      <div class="cgrid">
+        <div class="cbox"><b id="cd">0</b><span>ngày</span></div>
+        <div class="cbox"><b id="ch">0</b><span>giờ</span></div>
+        <div class="cbox"><b id="cm">0</b><span>phút</span></div>
+        <div class="cbox"><b id="cs">0</b><span>giây</span></div>
+      </div>
+      <div class="love"><span data-path="hero.loveLabel"></span> <b id="cl">0</b> ngày</div>
+    </div>
+    <div class="scroll-cue" data-path="hero.scrollCue"></div>
+  </section>
+
+  <section class="timeline wrap" id="timeline"></section>
+
+  <section class="letter-sec wrap">
+    <p class="lead reveal" data-path="letter.lead"></p>
+    <button class="envelope reveal" id="envBtn" type="button" aria-expanded="false" aria-controls="letter">
+      <span class="seal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.4 2.3 4.5 6 4.5c2.2 0 3.6 1.2 4.5 2.6.3.5 1 .5 1.3 0 .9-1.4 2.3-2.6 4.5-2.6 3.7 0 5.6 3.9 4 7.2C19.5 16.4 12 21 12 21z" fill="#fff"/></svg></span>
+      <span class="open-txt">Chạm để mở thư</span>
+    </button>
+    <div class="letter" id="letter">
+      <div class="card" style="position:relative">
+        <img class="stk-float" src="stk/s8.png" alt="" style="right:-26px;top:-60px;rotate:10deg;width:96px">
+        <h2 data-path="letter.title"></h2>
+        <div class="msg" id="letterMsg"></div>
+        <div class="sign" data-path="letter.sign"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ending wrap">
+    <h2><span data-path="ending.title"></span> <span style="color:var(--pink)">♥</span></h2>
+    <p data-path="ending.sub"></p>
+  </section>
+</main>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Xem ảnh">
+  <button class="close" type="button" aria-label="Đóng"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <img alt="">
+  <div class="lbcap"></div>
+</div>
+
+<div class="edit-bar" id="editBar" hidden>
+  <b>Đang chỉnh sửa</b>
+  <button type="button" class="main" id="eDownload">Tải content.js</button>
+  <button type="button" id="eCopy">Sao chép</button>
+  <button type="button" id="eReset">Bỏ hết thay đổi</button>
+  <button type="button" id="eExit">Xem thử</button>
+  <div class="st" id="eStatus">Bấm vào chữ bất kỳ để sửa. Dùng nút ◀ ▶ dưới ảnh để đổi thứ tự. Bản nháp tự lưu trong trình duyệt này.</div>
+</div>
+
+<script src="content.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
