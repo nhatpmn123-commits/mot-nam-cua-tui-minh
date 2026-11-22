@@ -60,9 +60,19 @@ window.CONTENT = {
           "cap": "Người ta cố tình về với em mà em đá note nì"
         },
         {
+          "src": "img/img-20251115-225415.jpg",
+          "cap": "Người ta đi xong lại đá note tiếpp",
+          "fit": "full"
+        },
+        {
           "src": "img/tn1.jpg",
           "fit": "full",
-          "cap": "Đêm 20/11, mấy dòng đầu tiên của tụi mình"
+          "cap": "Chiếc str làm tui đứng ngồi không yên vì muốn nhắn nèe"
+        },
+        {
+          "src": "img/screenshot-2025-11-20-23-46-32-17-1c3376.jpg",
+          "cap": "Khúc nì là tim đập thình thịch lunn",
+          "fit": "full"
         },
         {
           "src": "img/tn2.jpg",
@@ -82,16 +92,12 @@ window.CONTENT = {
         {
           "src": "img/tn7.jpg",
           "fit": "full",
-          "cap": "Chị Vân bảo: phen này rung động thật rồi ;>"
+          "cap": "Vội vàng hỏi các chị xem có phải họ hàng không thì chị bảo:"
         },
         {
           "src": "img/tn8.jpg",
           "fit": "full",
-          "cap": "Playlist “Yêu” anh làm cho em"
-        },
-        {
-          "src": "img/screenshot-2025-11-20-23-46-32-17-1c3376.jpg",
-          "cap": "Chú thích…"
+          "cap": "Đợt đó tui nghe toàn nhạc iu đời lun, vì em đã tớii"
         }
       ],
       "msg": [
@@ -109,12 +115,12 @@ window.CONTENT = {
           "cap": "Bộ phim đầu tiên tụi mình xem cùng nhau"
         },
         {
-          "src": "img/hh2.jpg",
-          "cap": "Em bé ôm hoa bên cây thông Noel"
+          "src": "img/hh3.jpg",
+          "cap": "Em thấy tui depchai hem"
         },
         {
-          "src": "img/hh3.jpg",
-          "cap": "Xếp hàng mua bắp nước mà cũng thấy vui"
+          "src": "img/hh2.jpg",
+          "cap": "Lúc này tui đã tự hứa lần sau sẽ tặng em một bó hoa tươi thật đẹpp"
         },
         {
           "src": "img/p1.jpg",
@@ -126,7 +132,7 @@ window.CONTENT = {
         },
         {
           "src": "img/hh4.jpg",
-          "cap": "Selfie kính phi công, hơi ngố mà vui"
+          "cap": "Cute thíii"
         },
         {
           "src": "img/p3.jpg",
@@ -150,35 +156,37 @@ window.CONTENT = {
       "photos": [
         {
           "src": "img/yx1.jpg",
-          "cap": "Em bé chữ V qua màn hình"
+          "cap": "Em bé say hii",
+          "fit": "full"
         },
         {
           "src": "img/yx2.jpg",
-          "cap": "Cười tít mắt luôn nè"
+          "cap": "Cười tít mắt luôn nè",
+          "fit": "full"
         },
         {
           "src": "img/p4.jpg",
-          "cap": "Những cuộc gọi tối muộn"
+          "cap": "Iem chụp anh",
+          "fit": "full"
         },
         {
           "src": "img/p5.jpg",
-          "cap": "Gọi cho em mà ngồi cười một mình"
+          "cap": "Tui đang học nè",
+          "fit": "full"
         },
         {
           "src": "img/yx3.jpg",
-          "cap": "Anh ngồi chống cằm ngắm em đó"
+          "cap": "Tui đang tập trung nìa",
+          "fit": "full"
         },
         {
           "src": "img/yx4.jpg",
-          "cap": "Cái mặt hạnh phúc của tui"
+          "cap": "Cái mặt hạnh phúc của tui",
+          "fit": "full"
         },
         {
           "src": "img/p6.jpg",
           "cap": "Hai tấm ảnh tạo chữ N của em"
-        },
-        {
-          "src": "img/p31.jpg",
-          "cap": "Anh ở đơn vị vẫn nhớ em nè"
         },
         {
           "src": "img/yx5.jpg",
@@ -207,7 +215,8 @@ window.CONTENT = {
         },
         {
           "src": "img/h2a.jpg",
-          "cap": "Chữ V đôi nèee"
+          "cap": "Haiii",
+          "fit": "full"
         },
         {
           "src": "img/p8.jpg",
@@ -215,7 +224,8 @@ window.CONTENT = {
         },
         {
           "src": "img/p9.jpg",
-          "cap": "Anh đã hạnh phúc biết bao, và anh nghĩ em cũng thế…"
+          "cap": "Anh đã hạnh phúc biết bao, và anh nghĩ em cũng thế…",
+          "fit": "full"
         }
       ],
       "video": {
@@ -234,7 +244,7 @@ window.CONTENT = {
       "photos": [
         {
           "src": "img/p10.jpg",
-          "cap": "Em ngại nè"
+          "cap": "Study date đồ đóo"
         },
         {
           "src": "img/p11.jpg",
@@ -246,27 +256,23 @@ window.CONTENT = {
         },
         {
           "src": "img/p13.jpg",
-          "cap": "Suy tư cùng nhau"
+          "cap": "Tình thíi"
         },
         {
           "src": "img/bn1.jpg",
-          "cap": "Đêm nào cũng chạy qua gặp em"
+          "cap": "Trông hay thíi"
         },
         {
           "src": "img/bn2.jpg",
-          "cap": "Mưa gió vẫn đi, áo mưa cũng phải tạo dáng"
+          "cap": "Dỗi thì dỗi chớ vẫn phại đi date"
         },
         {
           "src": "img/bn3.jpg",
           "cap": "Hai ly trà sữa, hai đứa mình"
         },
         {
-          "src": "img/bn4.jpg",
-          "cap": "Nháy mắt cái cho em mê"
-        },
-        {
           "src": "img/bn5.jpg",
-          "cap": "Dính lấy nhau không rời"
+          "cap": "Dính lấy nhau không rờii"
         }
       ],
       "msg": [
@@ -281,12 +287,20 @@ window.CONTENT = {
     },
     {
       "date": "14.02.2026",
-      "title": "Valentine & bó hoa đầu tiên",
+      "title": "Valentine ",
       "lead": "Có một ngày anh nghĩ là anh sẽ mãi không quên…",
       "photos": [
         {
+          "src": "img/img-4894.jpg",
+          "cap": "Đợt đó em khen tấm nì quá trờii"
+        },
+        {
+          "src": "img/452d178b73d046cd6aff4f8050aa3b3a.jpg",
+          "cap": "Rồi tui cũng làm em bất ngờ đượcc"
+        },
+        {
           "src": "img/vl1.jpg",
-          "cap": "Em cười che miệng mà mắt vẫn híp lại"
+          "cap": "Yến cười tít mắt lunn"
         },
         {
           "src": "img/p14.jpg",
@@ -302,15 +316,7 @@ window.CONTENT = {
         },
         {
           "src": "img/vl4.jpg",
-          "cap": "Ôm bó hoa không muốn buông"
-        },
-        {
-          "src": "img/vl7.jpg",
-          "cap": "Photobooth Valentine đầu tiên"
-        },
-        {
-          "src": "img/p16.jpg",
-          "cap": "Ai đó ngại quá che miệng luôn"
+          "cap": "Hải Yến và hoa"
         },
         {
           "src": "img/p15.jpg",
@@ -322,7 +328,7 @@ window.CONTENT = {
         },
         {
           "src": "img/vl6.jpg",
-          "cap": "Thêm chút socola cho ngọt"
+          "cap": "Thêm chút socola cho tình mình thêm ngọt;>"
         }
       ],
       "msg": [
@@ -345,7 +351,31 @@ window.CONTENT = {
           "cap": "Năm nào cũng muốn bên em như thế"
         },
         {
-          "ph": "Thêm ảnh mùng 1 → mùng 5 từ album"
+          "src": "img/img-7819.jpg",
+          "cap": "ín ín thì vẫn rất là cute gòi"
+        },
+        {
+          "src": "img/img-7948.jpg",
+          "cap": "Mình đi chụp ptb nè",
+          "fit": "full"
+        },
+        {
+          "src": "img/img-7955.jpg",
+          "cap": "Tình thíi"
+        },
+        {
+          "src": "img/img20260210220858.jpg",
+          "cap": "Coi hay chưaa"
+        },
+        {
+          "src": "img/locket-1770856735703-23.jpg",
+          "cap": "",
+          "fit": "full"
+        },
+        {
+          "src": "img/locket-1770856738708-1.jpg",
+          "cap": "",
+          "fit": "full"
         }
       ],
       "msg": [
@@ -445,12 +475,12 @@ window.CONTENT = {
           "cap": "Lời hứa từ hôm Valentine"
         },
         {
-          "src": "img/p28.jpg",
-          "cap": "Tấm đầu tiên là người yêu của nhau"
-        },
-        {
           "src": "img/p29.jpg",
           "cap": "Ngại ngùng ghê chưa"
+        },
+        {
+          "src": "img/p28.jpg",
+          "cap": "Tấm đầu tiên là người yêu của nhau"
         },
         {
           "src": "img/p30.jpg",
@@ -474,7 +504,41 @@ window.CONTENT = {
       "lead": "Rồi em cũng lên đại học…",
       "photos": [
         {
-          "ph": "Ảnh em vào thăm anh (chọn từ album)"
+          "src": "img/img-6112.jpg",
+          "cap": "Nói chung là tui depchai"
+        },
+        {
+          "src": "img/img-6115.jpg",
+          "cap": "Chu mỏ cute nì"
+        },
+        {
+          "src": "img/img-6122.jpg",
+          "cap": "Hải Yến mê tít"
+        },
+        {
+          "src": "img/img-6123.jpg",
+          "cap": "Cứ phại nà depchai"
+        },
+        {
+          "src": "img/img-6230.jpg",
+          "cap": "Đẹp đôi thíi",
+          "fit": "full"
+        },
+        {
+          "src": "img/img-7039.jpg",
+          "cap": "Đi date với sinh viên NEU"
+        },
+        {
+          "src": "img/img-7548.jpg",
+          "cap": "Em lại thăm tui nè"
+        },
+        {
+          "src": "img/img-7957.jpg",
+          "cap": "Xinh thíii"
+        },
+        {
+          "src": "img/5a5e5900dffd4c3e948933f3f3c728cd.jpg",
+          "cap": "Hai đứa cute ghê chưaa"
         }
       ],
       "msg": [
@@ -493,14 +557,14 @@ window.CONTENT = {
     "title": "Gửi em bé Hải Yến",
     "paragraphs": [
       "Một năm trước, anh chỉ là một người lặng lẽ để ý em từ xa, gõ một tin nhắn mà tim đập loạn hết cả lên. Một năm sau, anh có em, có cả một cuốn truyện, cả trăm tấm ảnh, và không biết bao nhiêu lần nằm cười một mình vì nhớ em.",
-      "Cảm ơn em vì đã kiên nhẫn với một người vụng về, hay quên mũ bảo hiểm, hay làm em bực. Cảm ơn em vì những cuộc gọi tối muộn, vì tấm ảnh chữ N, và vì câu “không… thể từ chối” hôm ấy.",
+      "Cảm ơn em vì đã kiên nhẫn với một người vụng về, hay quên, đôi khi còn làm em bực. Cảm ơn em vì những cuộc gọi tối muộn, vì những lúc mình bên nhau, và vì câu “không… thể từ chối” hôm ấy.",
       "Anh không biết tương lai sẽ đưa tụi mình đi đến đâu. Nhưng anh biết rất rõ một điều: anh muốn quãng thời gian phía trước của mình có em trong đó.",
-      "Thật lâu. Thật lâu."
+      "Từ Phan Minh Nhật, với thật nhiều tình cảm trong lòng."
     ],
-    "sign": "Anh yêu em – Nhật (tui)"
+    "sign": "Anh yêu em"
   },
   "ending": {
     "title": "Mình đi tiếp thật lâu nha",
-    "sub": "còn nhiều nhiều lắm những trang tiếp theo…"
+    "sub": "anh muốn mình còn nhiều nhiều lắm những trang tiếp theo cùng nhau!"
   }
 };
