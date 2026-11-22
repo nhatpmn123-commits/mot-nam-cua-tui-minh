@@ -220,6 +220,11 @@ body.editing .ectl{display:flex}
 .entry-ctl{gap:6px;flex-wrap:wrap;margin:-8px 0 14px;justify-content:flex-end}
 .add-photo{gap:6px;margin-top:10px}
 .add-photo input{flex:1;min-width:0;cursor:text}
+.add-photo{flex-wrap:wrap}
+.pick-local{display:none;align-items:center;min-height:38px;padding:0 14px;border-radius:6px;background:var(--pink);color:#fff;font:700 14px var(--body);cursor:pointer;width:100%;justify-content:center}
+body.local .pick-local{display:flex}
+body.local #eDownload,body.local #eCopy{display:none}
+.edit-bar button[hidden]{display:none}
 body.editing .track{scroll-snap-type:none}
 </style>
 </head>
@@ -299,6 +304,7 @@ body.editing .track{scroll-snap-type:none}
 
 <div class="edit-bar" id="editBar" hidden>
   <b>Đang chỉnh sửa</b>
+  <button type="button" class="main" id="ePublish" hidden>Lưu &amp; đăng lên web</button>
   <button type="button" class="main" id="eDownload">Tải content.js</button>
   <button type="button" id="eCopy">Sao chép</button>
   <button type="button" id="eReset">Bỏ hết thay đổi</button>

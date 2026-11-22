@@ -58,7 +58,7 @@ function renderTimeline(){
           <button class="arrow next" type="button" aria-label="Ảnh sau">${arrowR}</button>
         </div><div class="swipe-hint">gạt sang để xem thêm</div>` : ''}
       </div>` : '';
-    const addPhoto = EDIT ? `<div class="ectl add-photo"><input type="text" placeholder="img/ten-anh.jpg" aria-label="Đường dẫn ảnh mới" data-addinput="${i}"><button type="button" data-act="padd" data-e="${i}">+ Thêm ảnh</button></div>` : '';
+    const addPhoto = EDIT ? `<div class="ectl add-photo"><label class="pick-local">📷 Chọn ảnh từ máy<input type="file" accept="image/*,.heic" multiple data-pick="${i}" hidden></label><input type="text" placeholder="img/ten-anh.jpg" aria-label="Đường dẫn ảnh mới" data-addinput="${i}"><button type="button" data-act="padd" data-e="${i}">+ Thêm ảnh</button></div>` : '';
     const video = e.video ? `<div class="video"><div class="vlabel" data-path="entries.${i}.video.label">${esc(e.video.label)}</div>${
         e.video.src ? `<video src="${esc(e.video.src)}" ${e.video.poster?`poster="${esc(e.video.poster)}"`:''} controls playsinline preload="${e.video.poster?'none':'metadata'}"></video>`
                     : `<div class="box">${playSvg}<div>Video sẽ được thêm vào đây</div></div>`}</div>` : '';
@@ -169,6 +169,38 @@ function setupEditBar(){
     delete b.dataset.armed; b.textContent='Bỏ hết thay đổi'; status('Đã quay về bản trong content.js.');
   });
   $('#eExit').addEventListener('click', () => { location.hash = ''; location.reload(); });
+
+  /* Chạy qua Sua-web.bat trên laptop: chọn ảnh từ máy + đăng thẳng lên web */
+  fetch('/api/ping', {cache:'no-store'}).then(r => r.ok && r.json()).then(j => {
+    if (!j || !j.ok) return;
+    document.body.classList.add('local');
+    status('Đang sửa trên laptop: chọn ảnh từ máy ở mỗi mốc, sửa xong bấm “Lưu & đăng lên web”.');
+    const pub = $('#ePublish'); pub.hidden = false;
+    pub.addEventListener('click', async () => {
+      pub.disabled = true; status('Đang đăng lên web…');
+      try {
+        const r = await fetch('/api/publish', {method:'POST', body: exportText()}); const j = await r.json();
+        status(j.msg); if (j.ok) { try { localStorage.removeItem(DRAFT_KEY); } catch(e){} }
+      } catch(e) { status('Không kết nối được – cửa sổ Sua-web còn mở không?'); }
+      pub.disabled = false;
+    });
+  }).catch(() => {});
+  document.addEventListener('change', async ev => {
+    const inp = ev.target.closest('input[data-pick]'); if (!inp || !inp.files.length) return;
+    const i = +inp.dataset.pick, files = [...inp.files]; const added = [];
+    for (let n = 0; n < files.length; n++) {
+      status(`Đang thêm ảnh ${n+1}/${files.length}…`);
+      try {
+        const r = await fetch('/api/upload?name=' + encodeURIComponent(files[n].name), {method:'POST', body: files[n]});
+        const j = await r.json(); if (j.ok) added.push(j.src); else status(j.msg || 'Lỗi thêm ảnh');
+      } catch(e) { status('Không kết nối được – cửa sổ Sua-web còn mở không?'); return; }
+    }
+    structural(() => {
+      const E = C.entries[i]; E.photos = (E.photos || []).filter(p => !p.ph);
+      added.forEach(src => E.photos.push({src, cap:'Chú thích…'}));
+    });
+    status(`Đã thêm ${added.length} ảnh vào cuối album – bấm vào “Chú thích…” để viết câu dẫn.`);
+  });
 }
 
 /* ---------- lightbox, stickers, counter, envelope, lock ---------- */

@@ -12,7 +12,14 @@ Trang web kỷ niệm 1 năm của Nhật & Yến (20/11/2025).
 | `stk/` | Sticker đã tách nền |
 | `video/` | Bỏ video vào đây (mp4, nên dưới 20MB mỗi file) |
 
-## Sửa chữ và thứ tự ảnh (không cần code)
+## Sửa trên laptop (dễ nhất)
+Bấm đúp **`Sua-web.bat`**, trình duyệt mở trang sửa:
+- Bấm vào chữ bất kỳ để sửa câu dẫn, tiêu đề, đoạn văn.
+- Nút **📷 Chọn ảnh từ máy** ở mỗi mốc: chọn một hoặc nhiều ảnh (cả HEIC iPhone), ảnh tự thu nhỏ và nằm cuối album.
+- ◀ ▶ đổi thứ tự, ✕ bỏ ảnh, "Chuyển sang…" đưa ảnh sang mốc khác.
+- Xong bấm **Lưu & đăng lên web** – khoảng 1 phút sau link web cập nhật. Đóng cửa sổ đen khi xong.
+
+## Sửa chữ và thứ tự ảnh trên máy khác (không có Sua-web.bat)
 1. Mở `index.html#edit` (trên máy: kéo `index.html` vào trình duyệt rồi thêm `#edit` vào cuối địa chỉ; trên web: `https://ten-trang/#edit`).
 2. Bấm vào chữ bất kỳ để sửa. Dưới mỗi ảnh có nút ◀ ▶ (đổi thứ tự), ✕ (bỏ ảnh), "Chuyển sang…" (đưa ảnh sang mốc khác). Có nút thêm/xóa/đổi chỗ mốc, thêm đoạn văn.
 3. Thêm ảnh mới: chép ảnh vào `img/`, rồi gõ `img/ten-anh.jpg` vào ô "Thêm ảnh" của mốc đó.
