@@ -40,6 +40,7 @@ function renderTimeline(){
     const moveOpts = E.map((x,j) => j===i ? '' : `<option value="${j}">${esc(x.date)}</option>`).join('');
     const slides = photos.map((p,k) => {
       const ctl = EDIT ? `<div class="ectl slide-ctl">
+          <label class="pos">Số <input type="number" inputmode="numeric" min="1" max="${photos.length}" value="${k+1}" data-pos data-e="${i}" data-k="${k}" aria-label="Thứ tự ảnh"></label>
           <button type="button" data-act="pl" data-e="${i}" data-k="${k}" aria-label="Đưa ảnh lên trước" ${k===0?'disabled':''}>◀</button>
           <button type="button" data-act="pr" data-e="${i}" data-k="${k}" aria-label="Đưa ảnh ra sau" ${k===photos.length-1?'disabled':''}>▶</button>
           <button type="button" data-act="pdel" data-e="${i}" data-k="${k}" aria-label="Bỏ ảnh này">✕</button>
@@ -140,6 +141,17 @@ document.addEventListener('click', ev => {
     if (act==='padd') { const inp = document.querySelector(`[data-addinput="${i}"]`); const v = inp && inp.value.trim();
       if (v) { E[i].photos = E[i].photos || []; E[i].photos.push({src:v, cap:'Chú thích…'}); } }
   });
+});
+document.addEventListener('change', ev => {
+  const inp = ev.target.closest('input[data-pos]'); if (!inp || !EDIT) return;
+  const i=+inp.dataset.e, k=+inp.dataset.k, P=C.entries[i].photos;
+  let to = parseInt(inp.value, 10); if (isNaN(to)) { inp.value = k+1; return; }
+  to = Math.min(Math.max(to,1), P.length) - 1; if (to === k) { inp.value = k+1; return; }
+  structural(() => { const [p] = P.splice(k,1); P.splice(to,0,p); });
+  status(`Đã chuyển ảnh sang vị trí số ${to+1}.`);
+});
+document.addEventListener('keydown', ev => {
+  if (ev.key==='Enter' && ev.target.matches && ev.target.matches('input[data-pos]')) { ev.preventDefault(); ev.target.blur(); }
 });
 document.addEventListener('change', ev => {
   const s = ev.target.closest('select[data-act="pmove"]'); if (!s || s.value==='') return;
