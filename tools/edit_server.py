@@ -91,7 +91,10 @@ class Handler(SimpleHTTPRequestHandler):
                 im.save(path, quality=80, optimize=True)
                 rel = 'img/' + os.path.basename(path)
                 print('  + Đã thêm ảnh', rel)
-                return self.reply(200, {'ok': True, 'src': rel})
+                w, h = im.size
+                # Khung web là 4:5 (0.8). Ảnh dài (chụp màn hình) hoặc ngang thì hiện nguyên, không cắt.
+                full = (w / h) < 0.7 or (w / h) > 1.05
+                return self.reply(200, {'ok': True, 'src': rel, 'full': full})
             if u.path == '/api/publish':
                 text = data.decode('utf-8')
                 if 'window.CONTENT' not in text:

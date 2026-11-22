@@ -43,6 +43,7 @@ function renderTimeline(){
           <label class="pos">Số <input type="number" inputmode="numeric" min="1" max="${photos.length}" value="${k+1}" data-pos data-e="${i}" data-k="${k}" aria-label="Thứ tự ảnh"></label>
           <button type="button" data-act="pl" data-e="${i}" data-k="${k}" aria-label="Đưa ảnh lên trước" ${k===0?'disabled':''}>◀</button>
           <button type="button" data-act="pr" data-e="${i}" data-k="${k}" aria-label="Đưa ảnh ra sau" ${k===photos.length-1?'disabled':''}>▶</button>
+          ${p.ph ? '' : `<button type="button" data-act="pfit" data-e="${i}" data-k="${k}" title="Hiện nguyên ảnh hay cắt cho vừa khung">${p.fit==='full' ? '⛶ Cắt khung' : '⛶ Hiện nguyên'}</button>`}
           <button type="button" data-act="pdel" data-e="${i}" data-k="${k}" aria-label="Bỏ ảnh này">✕</button>
           <select data-act="pmove" data-e="${i}" data-k="${k}" aria-label="Chuyển ảnh sang mốc khác"><option value="">Chuyển sang…</option>${moveOpts}</select>
         </div>` : '';
@@ -132,6 +133,7 @@ document.addEventListener('click', ev => {
     if (act==='pl') swap(E[i].photos,k,k-1);
     if (act==='pr') swap(E[i].photos,k,k+1);
     if (act==='pdel') E[i].photos.splice(k,1);
+    if (act==='pfit') { const p = E[i].photos[k]; if (p.fit==='full') delete p.fit; else p.fit='full'; }
     if (act==='eup') swap(E,i,i-1);
     if (act==='edown') swap(E,i,i+1);
     if (act==='eadd') E.splice(i+1,0,{date:'Ngày…',title:'Mốc mới',lead:'Câu dẫn…',photos:[{ph:'Thêm ảnh'}],msg:['Viết gì đó cho em…']});
@@ -204,12 +206,12 @@ function setupEditBar(){
       status(`Đang thêm ảnh ${n+1}/${files.length}…`);
       try {
         const r = await fetch('/api/upload?name=' + encodeURIComponent(files[n].name), {method:'POST', body: files[n]});
-        const j = await r.json(); if (j.ok) added.push(j.src); else status(j.msg || 'Lỗi thêm ảnh');
+        const j = await r.json(); if (j.ok) added.push(j); else status(j.msg || 'Lỗi thêm ảnh');
       } catch(e) { status('Không kết nối được – cửa sổ Sua-web còn mở không?'); return; }
     }
     structural(() => {
       const E = C.entries[i]; E.photos = (E.photos || []).filter(p => !p.ph);
-      added.forEach(src => E.photos.push({src, cap:'Chú thích…'}));
+      added.forEach(a => E.photos.push(a.full ? {src:a.src, fit:'full', cap:'Chú thích…'} : {src:a.src, cap:'Chú thích…'}));
     });
     status(`Đã thêm ${added.length} ảnh vào cuối album – bấm vào “Chú thích…” để viết câu dẫn.`);
   });
